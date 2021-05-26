@@ -10,4 +10,3 @@ This version is a very simple calculator, no memory cache, no complex calculatio
 - Not Able to write "-x"
 - Can't return previous operation's result after clicking on another operator
 - Must always clean the result if there's an error) before beginning another operation
-- 
