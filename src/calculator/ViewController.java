@@ -113,6 +113,7 @@ public class ViewController implements Initializable {
             display.setText(display.getText() + "0");
         }else if (event.getSource() == clear){
             display.setText("");
+            model.setOperation(-1);
         }else if (event.getSource() == dot){
             display.setText(display.getText() + ".");
         }
