@@ -74,6 +74,18 @@ public class ViewController implements Initializable {
 
     @FXML
     private TextField display;
+    
+    @FXML
+    private Button dot;
+
+    @FXML
+    private Button inverse;
+
+    @FXML
+    private Button square;
+
+    @FXML
+    private Button sqrt;
 
     @FXML
     private void handleButtonClicked(ActionEvent event) {
@@ -101,6 +113,8 @@ public class ViewController implements Initializable {
             display.setText(display.getText() + "0");
         }else if (event.getSource() == clear){
             display.setText("");
+        }else if (event.getSource() == dot){
+            display.setText(display.getText() + ".");
         }
         
         //Operations
@@ -124,15 +138,49 @@ public class ViewController implements Initializable {
             model.setOperation(4);
             display.setText("");
         }
+        else if (event.getSource() == sqrt){
+            model.setData(Double.parseDouble(display.getText()));
+            model.setOperation(5);
+            try{
+                model.mathFunction();
+                display.setText(String.valueOf(model.getData()));
+            }catch (ArithmeticException e){
+                display.setText(e.getMessage());
+            }
+        }
+        else if (event.getSource() == inverse){
+            model.setData(Double.parseDouble(display.getText()));
+            model.setOperation(6);
+            try{
+                model.mathFunction();
+                display.setText(String.valueOf(model.getData()));
+            }catch (ArithmeticException e){
+                display.setText(e.getMessage());
+            }
+        }
+        else if (event.getSource() == square){
+            model.setData(Double.parseDouble(display.getText()));
+            model.setOperation(7);
+            try{
+                model.mathFunction();
+                display.setText(String.valueOf(model.getData()));
+            }catch (ArithmeticException e){
+                display.setText(e.getMessage());
+            }
+        }
         
         else if (event.getSource() == equals){
-            System.out.println(model.getData());
-            double second = Double.parseDouble(display.getText());
-            try{
-                model.mathOperation(second);
-            }catch (Exception e){display.setText("ERROR");}
-            System.out.println(model.getData());
+            resultEquals(model);
+        }
+    }
+    
+    private void resultEquals(Model model){
+        double second = Double.parseDouble(display.getText());
+        try{
+            model.mathOperation(second);
             display.setText(String.valueOf(model.getData()));
+        }catch (ArithmeticException e){
+            display.setText(e.getMessage());
         }
     }
     

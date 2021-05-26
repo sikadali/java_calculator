@@ -42,6 +42,24 @@ public class Model {
                 this.data /= secondOperand; break;
         }
         this.operation = -1;
+        if (this.data == Double.POSITIVE_INFINITY || this.data == Double.NEGATIVE_INFINITY || Double.isNaN(this.data)) {
+                throw new ArithmeticException("ERROR");
+        }
+    }
+    
+    public void mathFunction() {
+        switch(operation){
+            case 5: //Square root function
+                this.data = Math.sqrt(this.data); break;
+            case 6: //Inverse function
+                this.data = 1/this.data; break;
+            case 7: //Square function
+                this.data = this.data * this.data ; break;
+        }
+        this.operation = -1;
+        if (this.data == Double.POSITIVE_INFINITY || this.data == Double.NEGATIVE_INFINITY || Double.isNaN(this.data)) {
+                throw new ArithmeticException("ERROR");
+        }
     }
 
 }
